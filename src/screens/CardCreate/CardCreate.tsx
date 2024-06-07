@@ -1,13 +1,18 @@
-import {Box, Button, HStack, VStack} from 'native-base';
+import {Box, Button, HStack, VStack, useToast} from 'native-base';
 import {RootLayout} from '../../layouts';
 import {CardNumberInput, TextInput} from '../../components/inputs';
 import {useForm} from 'react-hook-form';
 import {createCardSchema} from '../../utils/schema';
 import {zodResolver} from '@hookform/resolvers/zod';
 import useCardStore from '../../stores/useCard';
+import {useNavigation} from '@react-navigation/native';
+import {SCREEN_NAMES} from '../../config/const';
 
 export function CardCreate() {
+  const toast = useToast();
+  const navigation = useNavigation();
   const {addCard} = useCardStore();
+
   const form = useForm({
     defaultValues: {
       name: '',
@@ -28,6 +33,13 @@ export function CardCreate() {
       expiration_year: expYear,
       security_code: +data.security_code,
     });
+
+    toast.show({
+      title: 'Successfully Added!',
+      placement: 'top',
+    });
+
+    navigation.navigate(SCREEN_NAMES.CARD_LISTS as never);
   });
 
   return (

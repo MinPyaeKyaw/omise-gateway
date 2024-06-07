@@ -55,6 +55,7 @@ export function CardNumberInput({
         borderWidth="1"
         borderColor="muted.300"
         borderRadius="lg"
+        pr="2"
         bgColor="white">
         <Input
           flex={1}

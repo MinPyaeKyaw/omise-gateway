@@ -1,4 +1,4 @@
-import {VStack} from 'native-base';
+import {VStack, ScrollView, Box} from 'native-base';
 import {Card} from '../../components/cards';
 import {RootLayout} from '../../layouts';
 import useCardStore from '../../stores/useCard';
@@ -6,8 +6,6 @@ import {NoCard} from './components';
 
 export function CardLists() {
   const {cards} = useCardStore();
-
-  console.log('cards', cards);
 
   if (cards.length === 0) {
     return (
@@ -18,12 +16,14 @@ export function CardLists() {
   }
 
   return (
-    <RootLayout>
-      <VStack flex={1} space="3">
-        {cards.map(card => (
-          <Card key={card.number} card={card} />
-        ))}
-      </VStack>
-    </RootLayout>
+    <Box flex={1} bg="white">
+      <ScrollView>
+        <VStack flex={1} space="3" px="5" pb="5">
+          {cards.map(card => (
+            <Card key={card.number} card={card} />
+          ))}
+        </VStack>
+      </ScrollView>
+    </Box>
   );
 }

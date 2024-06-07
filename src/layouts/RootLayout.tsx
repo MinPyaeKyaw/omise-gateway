@@ -1,4 +1,4 @@
-import {Box, ScrollView} from 'native-base';
+import {Box} from 'native-base';
 import {ReactNode} from 'react';
 
 interface Props {
@@ -7,12 +7,8 @@ interface Props {
 
 export function RootLayout({children}: Props) {
   return (
-    <Box flex={1}>
-      <ScrollView bg="white" flex={1}>
-        <Box px="5" bg="white">
-          {children}
-        </Box>
-      </ScrollView>
+    <Box flex={1} px="5" bg="white">
+      {children}
     </Box>
   );
 }
