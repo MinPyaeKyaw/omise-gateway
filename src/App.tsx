@@ -16,7 +16,7 @@ function App(): JSX.Element {
     <NavigationContainer>
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor="#d00f4c"
+        backgroundColor="#4AD8DA"
       />
       <NativeBaseConfig>
         <RootNavigation />
